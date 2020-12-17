@@ -1,1 +1,1 @@
-# ruby-exercises-
+# ruby-exercises
