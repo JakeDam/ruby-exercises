@@ -23,7 +23,7 @@ def encipher(char, shift)
     else
       enciphered_char = shifted_char + 65
     end
-  else char >= 97 && char <= 122
+  elsif char >= 97 && char <= 122
     index = char - 97
     shifted_char = (index + shift) % 26
     if shifted_char < 0
@@ -31,9 +31,21 @@ def encipher(char, shift)
       enchiphered_char = shifted_char + 97
     else 
       enciphered_char = shifted_char + 97
-    end 
+    end
+  else
+    char = char 
   end
 end
+
+#Call encipher on all characters in the array and convert to string 
+enciphered_array = message_array.map {|char| encipher(char, shift)}
+enciphered_array = enciphered_array.map(&:chr)
+
+#Join enciphered array back into string 
+enciphered_message = enciphered_array.join("")
+
+#Display enciphered message 
+puts "Enciphered Message: #{enciphered_message}"
 
 
 
