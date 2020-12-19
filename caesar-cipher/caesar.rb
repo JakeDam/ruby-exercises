@@ -12,28 +12,29 @@ end
 #Create character array and convert to ASCII
 message_array = message.split('').map(&:ord)
 
-#Encipher the array by the shift value
-enciphered_array = message_array.map do |num|
-  if (num >= 65 and num <= 90)
-    num -= 65
-    num = (num + shift) % 26
-    if num < 0 
-      num + 26 + 65
+#Function that takes a character and enciphers it by the shift value
+def encipher(char, shift) 
+  if char >= 65 && char <= 90 
+    index = char - 65
+    shifted_char = (index + shift) % 26
+    if shifted_char < 0 
+      shifted_char += 26
+      enciphered_char = shifted_char + 65
     else
-      num + 65
+      enciphered_char = shifted_char + 65
     end
-  elsif (num >= 97 and num <= 122)
-    num -= 97
-    num = (num + shift) % 26
-    if num < 0 
-      num + 26 + 97
-    else
-      num + 97
-    end
-  else
-    num = num
+  else char >= 97 && char <= 122
+    index = char - 97
+    shifted_char = (index + shift) % 26
+    if shifted_char < 0
+      shifted_char += 26
+      enchiphered_char = shifted_char + 97
+    else 
+      enciphered_char = shifted_char + 97
+    end 
   end
 end
+
 
 
   
